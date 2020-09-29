@@ -27,10 +27,10 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
                 CreateVideo(stream)
             })
             //This isn't working in chrome; works perfectly in firefox.
-             peer.on('close', function () {
-                 document.getElementById("peerVideo").remove();
-                 peer.destroy()
-             })
+            // peer.on('close', function () {
+            //     document.getElementById("peerVideo").remove();
+            //    peer.destroy()
+            // })
             peer.on('data', function (data) {
                 let decodedData = new TextDecoder('utf-8').decode(data)
                 let peervideo = document.querySelector('#peerVideo')
