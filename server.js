@@ -14,7 +14,7 @@ io.on('connection', function (socket) {
                 this.emit('CreatePeer')
             }
         }
-        else
+        //else
             this.emit('SessionActive')
         clients++;
     })
@@ -40,6 +40,7 @@ function SendAnswer(data) {
 }
 
 http.listen(port, () => console.log(`Active on ${port} port`))
+
 
 
 
