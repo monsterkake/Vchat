@@ -26,11 +26,11 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
             peer.on('stream', function (stream) {
                 CreateVideo(stream)
             })
-            //This isn't working in chrome; works perfectly in firefox.
-            // peer.on('close', function () {
-            //     document.getElementById("peerVideo").remove();
-            //     peer.destroy()
-            // })
+            This isn't working in chrome; works perfectly in firefox.
+             peer.on('close', function () {
+                 document.getElementById("peerVideo").remove();
+                 peer.destroy()
+             })
             peer.on('data', function (data) {
                 let decodedData = new TextDecoder('utf-8').decode(data)
                 let peervideo = document.querySelector('#peerVideo')
@@ -110,7 +110,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
         socket.on('BackAnswer', SignalAnswer)
         socket.on('SessionActive', SessionActive)
         socket.on('CreatePeer', MakePeer)
-        //socket.on('Disconnect', RemovePeer)
+        socket.on('Disconnect', RemovePeer)
 
     })
     .catch(err => document.write(err))
