@@ -14,7 +14,7 @@ io.on('connection', function (socket) {
                 this.emit('CreatePeer')
             }
         }
-        //else
+        else
             this.emit('SessionActive')
         clients++;
     })
