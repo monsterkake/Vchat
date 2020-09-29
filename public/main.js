@@ -110,7 +110,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
         socket.on('BackAnswer', SignalAnswer)
         socket.on('SessionActive', SessionActive)
         socket.on('CreatePeer', MakePeer)
-        socket.on('Disconnect', RemovePeer)
+        //socket.on('Disconnect', RemovePeer)
 
     })
     .catch(err => document.write(err))
