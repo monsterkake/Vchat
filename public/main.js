@@ -94,7 +94,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
 
         function SendFilter(filter) {
             if (client.peer) {
-                client.peer.send(filter)
+                //client.peer.send(filter)
             }
         }
 
