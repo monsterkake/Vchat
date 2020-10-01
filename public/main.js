@@ -101,9 +101,11 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
         function RemovePeer() {
             document.getElementById("peerVideo").remove();
             document.getElementById("muteText").remove();
+			video.pause();
             if (client.peer) {
                 client.peer.destroy()
             }
+			
         }
 
         socket.on('BackOffer', FrontAnswer)
