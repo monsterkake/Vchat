@@ -11,7 +11,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
     .then(stream => {
         socket.emit('NewClient')
         video.srcObject = stream
-        video.play()
+        //video.play()
 
         filter.addEventListener('change', (event) => {
             currentFilter = event.target.value
@@ -41,7 +41,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
 
         //for peer of type init
         function MakePeer() {
-            client.gotAnswer = false
+            client.gotAnswer = false         
             let peer = InitPeer('init')
             peer.on('signal', function (data) {
                 if (!client.gotAnswer) {
@@ -111,7 +111,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
         socket.on('SessionActive', SessionActive)
         socket.on('CreatePeer', MakePeer)
         socket.on('Disconnect', RemovePeer)
-
+		video.play()
     })
     .catch(err => document.write(err))
 
