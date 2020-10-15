@@ -2,35 +2,32 @@
 let Peer = require('simple-peer')
 let socket = io()
 const video = document.querySelector('video')
-const filter = document.querySelector('#filter')
+//const filter = document.querySelector('#filter')
 const checkboxTheme = document.querySelector('#theme')
 let client = {}
-let currentFilter
+//let currentFilter
+
 //get stream
 navigator.mediaDevices.getUserMedia({ video: true, audio: true })
     .then(stream => {
         socket.emit('NewClient')
         video.srcObject = stream
         video.play()
-
+/*
         filter.addEventListener('change', (event) => {
             currentFilter = event.target.value
             video.style.filter = currentFilter
             SendFilter(currentFilter)
             event.preventDefault
         })
-
+*/
         //used to initialize a peer
         function InitPeer(type) {
             let peer = new Peer({ initiator: (type == 'init') ? true : false, stream: stream, trickle: false })
             peer.on('stream', function (stream) {
                 CreateVideo(stream)
             })
-            //This isn't working in chrome; works perfectly in firefox.
-            // peer.on('close', function () {
-            //     document.getElementById("peerVideo").remove();
-            //    peer.destroy()
-            // })
+
             peer.on('data', function (data) {
                 let decodedData = new TextDecoder('utf-8').decode(data)
                 let peervideo = document.querySelector('#peerVideo')
@@ -77,7 +74,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
             document.querySelector('#peerDiv').appendChild(video)
             video.play()
             //wait for 1 sec
-            setTimeout(() => SendFilter(currentFilter), 1000)
+            setTimeout(() =>{}, 1000)
 
             video.addEventListener('click', () => {
                 if (video.volume != 0)
@@ -99,9 +96,9 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
         }
 
         function RemovePeer() {
+			video.pause();
             document.getElementById("peerVideo").remove();
             document.getElementById("muteText").remove();
-			video.pause();
             if (client.peer) {
                 client.peer.destroy()
             }
@@ -120,9 +117,16 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
 document.getElementById('closeButton').addEventListener('click',() =>{
 	socket.emit('disconnect')
 	})
-document.addEventListener('onunload',() =>{
+	
+	/*
+window.addEventListener('onunload',() =>{
 	socket.emit('disconnect')
 	})
+	*/
+	
+window.addEventListener("beforeunload", function () {
+	socket.emit('disconnect')
+});
 
 checkboxTheme.addEventListener('click', () => {
     if (checkboxTheme.checked == true) {
