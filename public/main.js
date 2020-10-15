@@ -5,7 +5,7 @@ const video = document.querySelector('video')
 const filter = document.querySelector('#filter')
 const checkboxTheme = document.querySelector('#theme')
 let client = {}
-let currentFilter
+let currentFilter = "none"
 
 //get stream
 navigator.mediaDevices.getUserMedia({ video: true, audio: true })
@@ -13,7 +13,8 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
         socket.emit('NewClient')
         video.srcObject = stream
         video.play()
-/*
+		video.style.filter = currentFilter
+/*		
         filter.addEventListener('change', (event) => {
             currentFilter = event.target.value
             video.style.filter = currentFilter
