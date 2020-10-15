@@ -116,6 +116,10 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
 		video.play()
     })
     .catch(err => document.write(err))
+	
+document.getElementById('closeButton').addEventListener('click',() =>{
+	socket.emit('disconnect')
+	})
 
 checkboxTheme.addEventListener('click', () => {
     if (checkboxTheme.checked == true) {
@@ -143,3 +147,7 @@ function CreateDiv() {
     if (checkboxTheme.checked == true)
         document.querySelector('#muteText').style.color = "#fff"
 }
+
+
+
+
