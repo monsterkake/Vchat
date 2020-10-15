@@ -31,7 +31,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
             peer.on('data', function (data) {
                 let decodedData = new TextDecoder('utf-8').decode(data)
                 let peervideo = document.querySelector('#peerVideo')
-                peervideo.style.filter = decodedData
+                //peervideo.style.filter = decodedData
             })
             return peer
         }
@@ -88,13 +88,13 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
         function SessionActive() {
             document.write('Session Active. Please come back later')
         }
-
+/*
         function SendFilter(filter) {
             if (client.peer) {
                 //client.peer.send(filter)
             }
         }
-
+*/
         function RemovePeer() {
 			video.pause();
             document.getElementById("peerVideo").remove();
