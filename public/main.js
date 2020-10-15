@@ -111,7 +111,6 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
         socket.on('SessionActive', SessionActive)
         socket.on('CreatePeer', MakePeer)
         socket.on('Disconnect', RemovePeer)
-		video.play()
     })
     .catch(err => document.write(err))
 	
@@ -119,16 +118,14 @@ document.getElementById('closeButton').addEventListener('click',() =>{
 	socket.emit('disconnect')
 	})
 	
-	/*
 window.addEventListener('onunload',() =>{
 	socket.emit('disconnect')
 	})
-	*/
-	/*
+	
 window.addEventListener("beforeunload", function () {
 	socket.emit('disconnect')
 });
-*/
+
 checkboxTheme.addEventListener('click', () => {
     if (checkboxTheme.checked == true) {
         document.body.style.backgroundColor = '#212529'
