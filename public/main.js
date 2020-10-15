@@ -2,10 +2,10 @@
 let Peer = require('simple-peer')
 let socket = io()
 const video = document.querySelector('video')
-//const filter = document.querySelector('#filter')
+const filter = document.querySelector('#filter')
 const checkboxTheme = document.querySelector('#theme')
 let client = {}
-//let currentFilter
+let currentFilter
 
 //get stream
 navigator.mediaDevices.getUserMedia({ video: true, audio: true })
