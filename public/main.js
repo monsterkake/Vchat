@@ -120,6 +120,9 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
 document.getElementById('closeButton').addEventListener('click',() =>{
 	socket.emit('disconnect')
 	})
+document.addEventListener('onunload',() =>{
+	socket.emit('disconnect')
+	})
 
 checkboxTheme.addEventListener('click', () => {
     if (checkboxTheme.checked == true) {
