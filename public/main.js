@@ -123,11 +123,11 @@ window.addEventListener('onunload',() =>{
 	socket.emit('disconnect')
 	})
 	*/
-	
+	/*
 window.addEventListener("beforeunload", function () {
 	socket.emit('disconnect')
 });
-
+*/
 checkboxTheme.addEventListener('click', () => {
     if (checkboxTheme.checked == true) {
         document.body.style.backgroundColor = '#212529'
