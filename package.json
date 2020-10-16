@@ -1,5 +1,5 @@
 {
-  "name": "simple-videochat-webrtc",
+  "name": "vchat",
   "version": "1.0.0",
   "description": "Video Chat between 2 people using simple-peer",
   "main": "main.js",
@@ -7,7 +7,7 @@
     "start": "node server.js",
     "watch": "npx watchify ./public/main.js -o ./public/bundle.js"
   },
-  "author": "Vinayak Sinha",
+  "author": "mtk",
   "dependencies": {
     "express": "^4.16.4",
     "simple-peer": "^9.7.2",
