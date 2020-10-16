@@ -8,12 +8,13 @@ let client = {}
 let currentFilter = "none"
 
 //get stream
-navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+navigator.mediaDevices.getUserMedia({ video: true, audio: false })
     .then(stream => {
         socket.emit('NewClient')
         video.srcObject = stream
         video.play()
 		video.style.filter = currentFilter
+		
 /*		
         filter.addEventListener('change', (event) => {
             currentFilter = event.target.value
@@ -42,6 +43,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
             client.gotAnswer = false         
             let peer = InitPeer('init')
             peer.on('signal', function (data) {
+				
                 if (!client.gotAnswer) {
                     socket.emit('Offer', data)
                 }
@@ -67,7 +69,6 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
 
         function CreateVideo(stream) {
             CreateDiv()
-
             let video = document.createElement('video')
             video.id = 'peerVideo'
             video.srcObject = stream
@@ -113,7 +114,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
         socket.on('Disconnect', RemovePeer)
     })
     .catch(err => document.write(err))
-	
+
 document.getElementById('closeButton').addEventListener('click',() =>{
 	socket.emit('disconnect')
 	})
