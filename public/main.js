@@ -12,7 +12,6 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: false })
     .then(stream => {
         socket.emit('NewClient')
         video.srcObject = stream
-        video.play()
 		video.style.filter = currentFilter
 		
 /*		
@@ -84,7 +83,6 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: false })
                 else
                     video.volume = 1
             })
-			video.play()
         }
 
         function SessionActive() {
