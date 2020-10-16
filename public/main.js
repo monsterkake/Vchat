@@ -75,7 +75,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: false })
             document.querySelector('#peerDiv').appendChild(video)
             video.play()
             //wait for 1 sec
-            setTimeout(() =>{}, 1000)
+            setTimeout(() =>{document.write('timeoutShit')}, 1000)
 
             video.addEventListener('click', () => {
                 if (video.volume != 0)
