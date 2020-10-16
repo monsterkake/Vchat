@@ -5,45 +5,45 @@ const video = document.querySelector('video')
 const filter = document.querySelector('#filter')
 const checkboxTheme = document.querySelector('#theme')
 let client = {}
-let currentFilter = "none"
-
+let currentFilter
 //get stream
 navigator.mediaDevices.getUserMedia({ video: true, audio: true })
     .then(stream => {
         socket.emit('NewClient')
         video.srcObject = stream
-		video.style.filter = currentFilter
-		video.play()
-		
-/*		
+        video.play()
+
         filter.addEventListener('change', (event) => {
             currentFilter = event.target.value
             video.style.filter = currentFilter
             SendFilter(currentFilter)
             event.preventDefault
         })
-*/
+
         //used to initialize a peer
         function InitPeer(type) {
             let peer = new Peer({ initiator: (type == 'init') ? true : false, stream: stream, trickle: false })
             peer.on('stream', function (stream) {
                 CreateVideo(stream)
             })
-
+            //This isn't working in chrome; works perfectly in firefox.
+            // peer.on('close', function () {
+            //     document.getElementById("peerVideo").remove();
+            //     peer.destroy()
+            // })
             peer.on('data', function (data) {
                 let decodedData = new TextDecoder('utf-8').decode(data)
                 let peervideo = document.querySelector('#peerVideo')
-                //peervideo.style.filter = decodedData
+                peervideo.style.filter = decodedData
             })
             return peer
         }
 
         //for peer of type init
         function MakePeer() {
-            client.gotAnswer = false         
+            client.gotAnswer = false
             let peer = InitPeer('init')
             peer.on('signal', function (data) {
-				
                 if (!client.gotAnswer) {
                     socket.emit('Offer', data)
                 }
@@ -69,16 +69,15 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
 
         function CreateVideo(stream) {
             CreateDiv()
-			
+
             let video = document.createElement('video')
             video.id = 'peerVideo'
             video.srcObject = stream
             video.setAttribute('class', 'embed-responsive-item')
             document.querySelector('#peerDiv').appendChild(video)
             video.play()
-			video.volume = 1
             //wait for 1 sec
-            setTimeout(() =>{}, 1000)
+            setTimeout(() => SendFilter(currentFilter), 1000)
 
             video.addEventListener('click', () => {
                 if (video.volume != 0)
@@ -86,27 +85,25 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
                 else
                     video.volume = 1
             })
-			video.play()
+
         }
 
         function SessionActive() {
             document.write('Session Active. Please come back later')
         }
-/*
+
         function SendFilter(filter) {
             if (client.peer) {
-                //client.peer.send(filter)
+                client.peer.send(filter)
             }
         }
-*/
+
         function RemovePeer() {
-			video.pause();
             document.getElementById("peerVideo").remove();
             document.getElementById("muteText").remove();
             if (client.peer) {
                 client.peer.destroy()
             }
-			
         }
 
         socket.on('BackOffer', FrontAnswer)
@@ -114,20 +111,9 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
         socket.on('SessionActive', SessionActive)
         socket.on('CreatePeer', MakePeer)
         socket.on('Disconnect', RemovePeer)
+
     })
     .catch(err => document.write(err))
-
-document.getElementById('closeButton').addEventListener('click',() =>{
-	socket.emit('disconnect')
-	})
-	
-window.addEventListener('onunload',() =>{
-	socket.emit('disconnect')
-	})
-	
-window.addEventListener("beforeunload", function () {
-	socket.emit('disconnect')
-});
 
 checkboxTheme.addEventListener('click', () => {
     if (checkboxTheme.checked == true) {
@@ -155,7 +141,3 @@ function CreateDiv() {
     if (checkboxTheme.checked == true)
         document.querySelector('#muteText').style.color = "#fff"
 }
-
-
-
-
