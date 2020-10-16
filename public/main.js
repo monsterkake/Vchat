@@ -13,7 +13,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
         socket.emit('NewClient')
         video.srcObject = stream
 		video.style.filter = currentFilter
-		
+		document.write('dhsh')
 /*		
         filter.addEventListener('change', (event) => {
             currentFilter = event.target.value
@@ -75,7 +75,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
             document.querySelector('#peerDiv').appendChild(video)
             video.play()
             //wait for 1 sec
-            setTimeout(() =>{document.write('timeoutShit')}, 1000)
+            setTimeout(() =>{}, 1000)
 
             video.addEventListener('click', () => {
                 if (video.volume != 0)
@@ -83,6 +83,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
                 else
                     video.volume = 1
             })
+			video.play()
         }
 
         function SessionActive() {
