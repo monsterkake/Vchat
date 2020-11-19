@@ -1,10 +1,8 @@
 
-window.addEventListener('load', (event) => {
-	if(sessionStorage.getItem("userRole") != "admin")
-		{
-			sessionStorage.setItem("userRole","basic")
-		}
-});
+if(sessionStorage.getItem("userRole") != "admin")
+	{
+		sessionStorage.setItem("userRole","basic")
+	}
 
 let userRole = sessionStorage.getItem("userRole")
 
