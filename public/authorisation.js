@@ -10,9 +10,7 @@ OkButton.addEventListener('click',()=>{
 	}
 	else{
 		console.log("Incorrectpassword")
-		sessionStorage.setItem("userRole","basic")
+		alert("Неправильный пароль!")
 	}
 })
-console.log(navigator.connection)
 let userRole = sessionStorage.getItem("userRole")
-console.log(userRole)
