@@ -1,0 +1,70 @@
+body
+{
+	background-color: fdff96; 
+	background-size: 1920px 1080px;
+	
+}
+
+.button
+{
+	background-color: ffd503; 
+	position: absolute;
+	color : black;
+	font-size: 1.5vw;
+	width: 13%;
+    height: 8%;
+}
+
+#chatButton
+{
+	margin: 0;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-size: 300px 300px;
+	font-size: 3.7vw;
+	width: 40%;
+    height: 25%;
+}
+
+#addOptionsButton
+{
+	position: absolute;
+	left: 87%;
+	top: 15%;
+	width: 13%;
+    height: 8%;
+}
+
+#developersLink
+{
+	position: absolute;
+	left: 87%;
+	top: 35%;
+	width: 13%;
+    height: 8%;
+}
+
+#informationButton
+{
+	position: absolute;
+	left: 87%;
+	top: 55%;
+	width: 13%;
+    height: 8%;
+}
+
+#blitzButton
+{
+	position: absolute;
+	left: 87%;
+	top: 75%;
+	width: 13%;
+    height: 8%;
+}
+
+#questionMark
+{
+	width: 30px;
+    height: 30px;
+}

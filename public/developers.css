@@ -1,0 +1,81 @@
+body
+{
+	background-color: fdff96; 
+	background-size: 1920px 1080px;
+}
+
+.button
+{
+	background-color: ffd503; 
+	position: absolute;
+	color : black;
+	font-size: 15px;
+	width: 20%;
+    height: 8%;
+}
+
+.text-block 
+{
+	padding: 10% 10px;
+	font-size: 2vw;
+}
+#nazadButton
+{
+	position: absolute;
+	left: 0%;
+	top: 0%;
+	font-size: 20px;
+	width: 150px;
+    height: 50px;
+}
+
+#TimLid
+{
+	position: absolute;
+	right: 0%;
+	top: 0%;
+	font-size: 20px;
+}
+
+#Ingeener-modelist
+{
+	position: absolute;
+	right: 0%;
+	top: 15%;
+	font-size: 20px;
+}
+
+#Modeller2
+{
+	position: absolute;
+	right: 0%;
+	top: 25%;
+	font-size: 20px;
+}
+
+#Proggrammer
+{
+	position: absolute;
+	right: 0%;
+	top: 40%;
+	font-size: 20px;
+}
+
+#Proggrammer2
+{
+	position: absolute;
+	right: 0%;
+	top: 50%;
+	font-size: 20px;
+}
+#Kurator
+{
+	position: absolute;
+	right: 0%;
+	top: 80%;
+	font-size: 20px;
+}
+
+
+
+

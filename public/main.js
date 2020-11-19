@@ -1,9 +1,13 @@
-
+//--------------------------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------------------------------------------
 let Peer = require('simple-peer')
 let socket = io()
 const video = document.querySelector('video')
 const filter = document.querySelector('#filter')
 const checkboxTheme = document.querySelector('#theme')
+const closeButton = document.querySelector('#closeButton')
+const videoButton = document.querySelector('#videoButton')
 let client = {}
 let currentFilter = "none"
 
@@ -11,9 +15,9 @@ let currentFilter = "none"
 navigator.mediaDevices.getUserMedia({ video: true, audio: true })
     .then(stream => {
         socket.emit('NewClient')
-        video.srcObject = stream
-		video.style.filter = currentFilter
-		video.play()
+        //video.srcObject = stream
+		//video.style.filter = currentFilter
+		//video.play() //owned video
 		
 /*		
         filter.addEventListener('change', (event) => {
@@ -35,6 +39,8 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
                 let peervideo = document.querySelector('#peerVideo')
                 //peervideo.style.filter = decodedData
             })
+			
+			console.log("InitPeer ", type);
             return peer
         }
 
@@ -59,16 +65,18 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
             })
             peer.signal(offer)
             client.peer = peer
+			console.log("FrontAnswer");
         }
 
         function SignalAnswer(answer) {
             client.gotAnswer = true
             let peer = client.peer
             peer.signal(answer)
+			console.log("SignalAnswer");
         }
 
         function CreateVideo(stream) {
-            CreateDiv()
+            //CreateDiv()
 			
             let video = document.createElement('video')
             video.id = 'peerVideo'
@@ -77,8 +85,10 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
             document.querySelector('#peerDiv').appendChild(video)
             video.play()
 			video.volume = 1
+			video.setAttribute('width', '320')
+			video.setAttribute('height', '100')
             //wait for 1 sec
-            setTimeout(() =>{}, 1000)
+            setTimeout(() =>{console.log("timeout")}, 1000)
 
             video.addEventListener('click', () => {
                 if (video.volume != 0)
@@ -86,7 +96,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
                 else
                     video.volume = 1
             })
-			video.play()
+			console.log("CreateVideo");
         }
 
         function SessionActive() {
@@ -100,11 +110,12 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
         }
 */
         function RemovePeer() {
-			video.pause();
+			//document.getElementById("peerVideo").pause();
             document.getElementById("peerVideo").remove();
             document.getElementById("muteText").remove();
             if (client.peer) {
                 client.peer.destroy()
+				console.log("peer.destroy")
             }
 			
         }
@@ -116,11 +127,19 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
         socket.on('Disconnect', RemovePeer)
     })
     .catch(err => document.write(err))
-
-document.getElementById('closeButton').addEventListener('click',() =>{
+	
+closeButton.addEventListener('click',() =>{
+	console.log("closeButton.click")
 	socket.emit('disconnect')
 	})
 	
+videoButton.addEventListener('click',() =>{
+	console.log("videoButton.click")
+	let video = document.getElementById("peerVideo")
+	video.play()
+	})
+	
+/*
 window.addEventListener('onunload',() =>{
 	socket.emit('disconnect')
 	})
@@ -128,6 +147,13 @@ window.addEventListener('onunload',() =>{
 window.addEventListener("beforeunload", function () {
 	socket.emit('disconnect')
 });
+*/
+
+
+window.onbeforeunload = () => 
+{
+	socket.emit('disconnect')
+}
 
 checkboxTheme.addEventListener('click', () => {
     if (checkboxTheme.checked == true) {
@@ -147,6 +173,7 @@ checkboxTheme.addEventListener('click', () => {
 )
 
 function CreateDiv() {
+
     let div = document.createElement('div')
     div.setAttribute('class', "centered")
     div.id = "muteText"
@@ -155,7 +182,3 @@ function CreateDiv() {
     if (checkboxTheme.checked == true)
         document.querySelector('#muteText').style.color = "#fff"
 }
-
-
-
-

@@ -10,6 +10,7 @@
   "author": "mtk",
   "dependencies": {
     "express": "^4.16.4",
+    "http-server": "^0.12.3",
     "simple-peer": "^9.7.2",
     "socket.io": "^2.2.0"
   },

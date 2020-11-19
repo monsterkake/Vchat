@@ -1,50 +1,19 @@
 <html>
 
 <head>
-    <title>Video Chat App</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link href="main.css" rel="stylesheet">
+    <title>index</title>
+    <link href="index.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row h-10 w-100">
-            <div class="col"; visibility: hidden>
-			
-               <select id="filter" >
-               </select>
-				
-            </div>
-            <div class="col">
-                <div class="float-right mt-3">
-                    <input class="form-check-input" type="checkbox" id="theme">
-                    <label class="form-check-label" for="theme">Dark Theme</label><br/>
-					<!--
-					<label>Your ID:</label><br/>
-					<textarea id="yourId"></textarea><br/>
-					<label>Other ID:</label><br/>
-					<textarea id="otherId"></textarea><br/>
-					-->
-                </div>
-            </div>
-        </div>
-        <div class="row h-90 w-100">
-            <div class="col-12 col-sm-6 d-flex justify-content-center">
-                <div class="embed-responsive embed-responsive-16by9">
-                    <video class="embed-responsive-item" muted></video>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 d-flex justify-content-center">
-                <div id="peerDiv" class="embed-responsive embed-responsive-16by9">
-                </div>
-            </div>
-        </div>
-    </div>
-	<button id ="closeButton">Close</button>
+		<button onclick="window.location.href='chat.html'" id = "chatButton" class = "button">Видеочат с оператором</button>
+		<button onclick="window.location.href='index.html'" id = "questionMark" class = "button">?</button>
+		<button onclick="window.location.href='addOptions.html'" id = "addOptionsButton" class = "button">Другое</button>
+		<button onclick="window.location.href='developers.html'" id = "developersLink" class = "button">Разработчики</button>
+		<button onclick="window.location.href='information.html'" id = "informationButton" class = "button">Информация</button>
+		<button onclick="window.location.href='blitz-test.html'" id = "blitzButton" class = "button">БлицТест</button>
+		<button onclick="window.location.href='authorisation.html'" id = "authorisationButton" class = "button">authorisation</button>
 
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="bundle.js"></script>
 </body>
 
 </html>
