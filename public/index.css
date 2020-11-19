@@ -68,3 +68,9 @@ body
 	width: 30px;
     height: 30px;
 }
+
+#label
+{
+	position: absolute;
+	left: 50%;
+}
