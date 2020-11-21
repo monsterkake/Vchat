@@ -69,6 +69,12 @@ body
     height: 30px;
 }
 
+#resetButton
+{
+	position: absolute;
+	top: 50%
+}
+
 #label
 {
 	position: absolute;
