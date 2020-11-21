@@ -7644,7 +7644,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
 			//document.getElementById("peerVideo").pause();
             document.getElementById("peerVideo").remove();
             //document.getElementById("muteText").remove();
-			document.getElementById("muteButton").remove();
+			//document.getElementById("muteButton").remove();
             if (client.peer) {
                 client.peer.destroy()
 				console.log("peer.destroy")
@@ -7663,7 +7663,8 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
         socket.on('Disconnect', RemovePeer)
 		//socket.on('Authorisation',Authorisation)
     })
-    .catch(err => document.write(err))
+    //.catch(err => document.write(err))
+	.catch(err => console.log(err))
 	
 closeButton.addEventListener('click',() =>{
 	console.log("closeButton.click")
@@ -7674,12 +7675,8 @@ videoButton.addEventListener('click',() =>{
 	console.log("videoButton.click")
 	let video = document.getElementById("peerVideo")
 	video.play()
-	})
-	
-autoButton.addEventListener('click', () =>{
-	socket.emit('Authorisation_')
-	console.log("autoButton.click")
 })
+	
 	
 window.onbeforeunload = () => 
 {
@@ -7703,12 +7700,13 @@ checkboxTheme.addEventListener('click', () => {
 })
 
 function CreateMuteButton() {
-
+	/*
     let button = document.createElement('button')
     button.setAttribute('class', "bottom")
     button.id = "muteButton"
     button.innerHTML = "Mute"
     document.querySelector('#menuDiv').appendChild(button)
+	*/
 }
 
 function CreateDiv() {

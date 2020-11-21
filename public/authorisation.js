@@ -6,12 +6,11 @@ const OkButton = document.querySelector('#OkButton')
 OkButton.addEventListener('click',()=>{
 	if(passwordInput.value == "***"){
 		console.log("correctpassword")
+		sessionStorage.setItem("userRole","admin")
 	}
 	else{
 		console.log("Incorrectpassword")
-		socket.emit("correctPassword")
-		socket.emit("Authorisation_")
+		alert("Неправильный пароль!")
 	}
-	
 })
-console.log(navigator.connection)
+let userRole = sessionStorage.getItem("userRole")

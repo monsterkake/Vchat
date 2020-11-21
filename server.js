@@ -8,6 +8,7 @@ const fs = require('fs');
 app.use(express.static(__dirname + "/public"))
 let clients = 0
 
+
 io.on('connection', function (socket) {
     socket.on("NewClient", function () {
         if (clients < 2) {
@@ -19,11 +20,10 @@ io.on('connection', function (socket) {
             this.emit('SessionActive')
         clients++;
     })
-	//console.log("authorisationFunction");
     socket.on('Offer', SendOffer)
     socket.on('Answer', SendAnswer)
     socket.on('Disconnect', Disconnect)
-	socket.on('Authorisation_', Authorisation)
+	socket.on('reset', resetServer)
 })
 
 function Disconnect() {
@@ -44,15 +44,10 @@ function SendAnswer(data) {
 
 http.listen(port, () => console.log(`Active on ${port} port`))
 
-function Authorisation()
+function resetServer()
 {
-	console.log("authorisationFunction");
-	fs.writeFile('data.txt', "text", (err) => { 
-	      
-	    if (err) return console.log(err);
-		console.log("file created");
-
-	}) 
+	clients = 0
+	console.log("reset")
 }
 
 /*
