@@ -8,7 +8,6 @@ const fs = require('fs');
 app.use(express.static(__dirname + "/public"))
 let clients = 0
 
-
 io.on('connection', function (socket) {
     socket.on("NewClient", function () {
         if (clients < 2) {
@@ -36,6 +35,7 @@ function Disconnect() {
 
 function SendOffer(offer) {
     this.broadcast.emit("BackOffer", offer)
+	console.log(this.broadcast)
 }
 
 function SendAnswer(data) {
@@ -49,19 +49,3 @@ function resetServer()
 	clients = 0
 	console.log("reset")
 }
-
-/*
-	fetch('data.txt')
-	.then(function(response){
-		return response.text();
-	})
-	.then(function(data){
-		console.log(data)
-		text = data
-		
-		if(text == "gayyyy")
-			console.log("sex")
-		else
-			console.log(":(")
-	})
-	*/

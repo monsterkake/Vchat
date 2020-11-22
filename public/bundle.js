@@ -7642,7 +7642,10 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
 */
         function RemovePeer() {
 			//document.getElementById("peerVideo").pause();
-            document.getElementById("peerVideo").remove();
+			if(document.getElementById("peerVideo") != null){
+				document.getElementById("peerVideo").remove();
+			}
+				
             //document.getElementById("muteText").remove();
 			//document.getElementById("muteButton").remove();
             if (client.peer) {
