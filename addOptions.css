@@ -1,0 +1,51 @@
+body
+{
+	background-color: fff; 
+	background-size: 1920px 1080px;
+}
+
+.button
+{
+	background-color: ffd503; 
+	position: absolute;
+	color : black;
+	font-size: 2.5vw;
+	width: 13%;
+    height: 8%;
+}
+
+#nazadButton
+{
+	position: absolute;
+	left: 0%;
+	top: 0%;
+	width: 50%;
+    height: 50%;
+}
+#developersLink
+{
+	position: absolute;
+	left: 50%;
+	top: 0%;
+	width: 50%;
+    height: 50%;
+}
+
+#informationButton
+{
+	position: absolute;
+	left:0%;
+	top: 50%;
+	width: 50%;
+    height: 50%;
+}
+
+#blitzButton
+{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 50%;
+    height: 50%;
+}
+

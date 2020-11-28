@@ -1,0 +1,41 @@
+body
+{
+	background-color: fff; 
+	background-size: 1920px 1080px;
+	
+}
+.password
+{
+	position: absolute;
+	padding: 10% 35%;
+	font-size: 2vw;
+	width: 35%;
+}
+.text-block 
+{
+	background-color: ffd503;
+	position: absolute;
+	color : black;
+	font-size: 2vw;
+	width: 24%;
+	height: 15%;
+}
+.button
+{
+	background-color: ffd503; 
+	position: absolute;
+	color : black;
+	font-size: 1.5vw;
+	width: 13%;
+    height: 8%;
+}
+
+#nazadButton
+{
+	position: absolute;
+	left: 0%;
+	top: 0%;
+	font-size: 20px;
+	width: 150px;
+    height: 50px;
+}
