@@ -35,7 +35,7 @@ function Disconnect() {
 
 function SendOffer(offer) {
     this.broadcast.emit("BackOffer", offer)
-	console.log(this.broadcast)
+	//console.log(this.broadcast)
 }
 
 function SendAnswer(data) {

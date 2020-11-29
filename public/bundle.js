@@ -7608,7 +7608,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
 
         function CreateVideo(stream) {
             //CreateDiv()
-			CreateMuteButton();
+			//CreateMuteButton();
             let video = document.createElement('video')
             video.id = 'peerVideo'
             video.srcObject = stream
@@ -7618,7 +7618,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
 			video.volume = 1
 			
             //wait for 1 sec
-            setTimeout(() =>{console.log("timeout")}, 1000)
+            setTimeout(() =>{}, 1000)
 
             video.addEventListener('click', () => {
                 if (video.volume != 0)
