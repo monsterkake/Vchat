@@ -7535,7 +7535,6 @@ let socket = io()
 const video = document.querySelector('video')
 const filter = document.querySelector('#filter')
 const checkboxTheme = document.querySelector('#theme')
-const closeButton = document.querySelector('#closeButton')
 const videoButton = document.querySelector('#videoButton')
 const autoButton = document.querySelector('#autoButton')
 let client = {}
@@ -7668,11 +7667,6 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
     })
     //.catch(err => document.write(err))
 	.catch(err => console.log(err))
-	
-closeButton.addEventListener('click',() =>{
-	console.log("closeButton.click")
-	socket.emit('Disconnect')
-	})
 	
 videoButton.addEventListener('click',() =>{
 	console.log("videoButton.click")
