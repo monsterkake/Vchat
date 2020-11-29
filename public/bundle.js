@@ -7609,13 +7609,16 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
 
         function CreateVideo(stream) {
             //CreateDiv()
-			CreateMuteButton();
-            let video = document.createElement('video')
-            video.id = 'peerVideo'
+			//CreateMuteButton();
+            //let video = document.createElement('video')
+			let video = document.getElementById('peerVideo')
+            //video.id = 'peerVideo'
             video.srcObject = stream
-            video.setAttribute('class', 'embed-responsive-item')
-            document.querySelector('#peerDiv').appendChild(video)
+			console.log(stream)
+            //video.setAttribute('class', 'embed-responsive-item')
+            //document.querySelector('#peerDiv').appendChild(video)
             video.play()
+			//console.log(video)
 			video.volume = 1
 			
             //wait for 1 sec
@@ -7643,7 +7646,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
         function RemovePeer() {
 			//document.getElementById("peerVideo").pause();
 			if(document.getElementById("peerVideo") != null){
-				document.getElementById("peerVideo").remove();
+				//document.getElementById("peerVideo").remove();
 			}
 				
             //document.getElementById("muteText").remove();

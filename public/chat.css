@@ -27,6 +27,7 @@ video {
 }
 
 #peerVideo {
+	
 	max-width: 500%;
 	width: 70%;
 	height: auto;
