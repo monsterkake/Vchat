@@ -8,25 +8,16 @@ const filter = document.querySelector('#filter')
 const checkboxTheme = document.querySelector('#theme')
 const closeButton = document.querySelector('#closeButton')
 const videoButton = document.querySelector('#videoButton')
+const autoButton = document.querySelector('#autoButton')
 let client = {}
 let currentFilter = "none"
+
+
 
 //get stream
 navigator.mediaDevices.getUserMedia({ video: true, audio: true })
     .then(stream => {
         socket.emit('NewClient')
-        //video.srcObject = stream
-		//video.style.filter = currentFilter
-		//video.play() //owned video
-		
-/*		
-        filter.addEventListener('change', (event) => {
-            currentFilter = event.target.value
-            video.style.filter = currentFilter
-            SendFilter(currentFilter)
-            event.preventDefault
-        })
-*/
         //used to initialize a peer
         function InitPeer(type) {
             let peer = new Peer({ initiator: (type == 'init') ? true : false, stream: stream, trickle: false })
@@ -77,7 +68,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
 
         function CreateVideo(stream) {
             //CreateDiv()
-			
+			CreateMuteButton();
             let video = document.createElement('video')
             video.id = 'peerVideo'
             video.srcObject = stream
@@ -85,8 +76,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
             document.querySelector('#peerDiv').appendChild(video)
             video.play()
 			video.volume = 1
-			video.setAttribute('width', '320')
-			video.setAttribute('height', '100')
+			
             //wait for 1 sec
             setTimeout(() =>{console.log("timeout")}, 1000)
 
@@ -102,57 +92,49 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
         function SessionActive() {
             document.write('Session Active. Please come back later')
         }
-/*
-        function SendFilter(filter) {
-            if (client.peer) {
-                //client.peer.send(filter)
-            }
-        }
-*/
+		
         function RemovePeer() {
 			//document.getElementById("peerVideo").pause();
-            document.getElementById("peerVideo").remove();
-            document.getElementById("muteText").remove();
+			if(document.getElementById("peerVideo") != null){
+				document.getElementById("peerVideo").remove();
+			}
+				
+            //document.getElementById("muteText").remove();
+			//document.getElementById("muteButton").remove();
             if (client.peer) {
                 client.peer.destroy()
 				console.log("peer.destroy")
             }
 			
         }
-
+/*	
+		 function Authorisation() {
+			console.log("authorisationInBundle")
+        }
+*/
         socket.on('BackOffer', FrontAnswer)
         socket.on('BackAnswer', SignalAnswer)
         socket.on('SessionActive', SessionActive)
         socket.on('CreatePeer', MakePeer)
         socket.on('Disconnect', RemovePeer)
     })
-    .catch(err => document.write(err))
+	.catch(err => console.log(err))
 	
 closeButton.addEventListener('click',() =>{
 	console.log("closeButton.click")
-	socket.emit('disconnect')
+	socket.emit('Disconnect')
 	})
 	
 videoButton.addEventListener('click',() =>{
 	console.log("videoButton.click")
 	let video = document.getElementById("peerVideo")
 	video.play()
-	})
+})
 	
-/*
-window.addEventListener('onunload',() =>{
-	socket.emit('disconnect')
-	})
 	
-window.addEventListener("beforeunload", function () {
-	socket.emit('disconnect')
-});
-*/
-
-
 window.onbeforeunload = () => 
 {
-	socket.emit('disconnect')
+	socket.emit('Disconnect')
 }
 
 checkboxTheme.addEventListener('click', () => {
@@ -169,8 +151,17 @@ checkboxTheme.addEventListener('click', () => {
             document.querySelector('#muteText').style.color = "#212529"
         }
     }
+})
+
+function CreateMuteButton() {
+	/*
+    let button = document.createElement('button')
+    button.setAttribute('class', "bottom")
+    button.id = "muteButton"
+    button.innerHTML = "Mute"
+    document.querySelector('#menuDiv').appendChild(button)
+	*/
 }
-)
 
 function CreateDiv() {
 
