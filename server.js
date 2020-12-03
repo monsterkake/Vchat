@@ -18,6 +18,7 @@ io.on('connection', function (socket) {
         else
             this.emit('SessionActive')
         clients++;
+		console.log(clients)
     })
     socket.on('Offer', SendOffer)
     socket.on('Answer', SendAnswer)
@@ -35,7 +36,7 @@ function Disconnect() {
 
 function SendOffer(offer) {
     this.broadcast.emit("BackOffer", offer)
-	console.log(this.broadcast)
+	//console.log(this.broadcast)
 }
 
 function SendAnswer(data) {
