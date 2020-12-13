@@ -1,0 +1,21 @@
+<html>
+
+<head>
+    <title>authorisation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="authorisation.css" rel="stylesheet">
+</head>
+
+<body>
+	<form action="developersLogin" class = "password">	   
+		<p>Введите пароль разработчика:</p>
+		<input  type="text" id="passwordInput" ></p>
+		<button class="text-block" id = "OkButton">Войти</button>
+	</form>
+	
+	<button id = "backButton" onclick="window.location.href='../index.html'" class = "button" >Назад</button>
+    <script src="/socket.io/socket.io.js"></script>
+	<script src="authorisation.js"></script>
+</body>
+
+</html>

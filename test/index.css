@@ -1,0 +1,54 @@
+body
+{
+	background-color: fff; 
+	background-size: 1920px 1080px;
+	
+}
+
+.button
+{
+	background-color: ffd503; 
+	position: absolute;
+	color : black;
+	font-size: 1.5vw;
+}
+
+#chatButton
+{
+	margin: 0;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-size: 300px 300px;
+	font-size: 3.7vw;
+	width: 40%;
+    height: 25%;
+}
+
+#addOptionsButton
+{
+	position: absolute;
+	left: 86%;
+	top: 1%;
+	width: 13%;
+    height: 8%;
+}
+
+#authorisationButton
+{
+	position: absolute;
+	width: 13%;
+    height: 8%;
+}
+
+#resetButton
+{
+	position: absolute;
+	top: 50%
+}
+
+#label
+{
+	position: absolute;
+	left: 50%;
+}
