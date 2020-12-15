@@ -7,10 +7,12 @@ OkButton.addEventListener('click',()=>{
 	if(passwordInput.value == "***"){
 		console.log("correctpassword")
 		sessionStorage.setItem("userRole","admin")
+		alert("Вход выполнен")
 	}
 	else{
 		console.log("Incorrectpassword")
 		alert("Неправильный пароль!")
 	}
+	//alert("Неправильный пароль!")
 })
 let userRole = sessionStorage.getItem("userRole")

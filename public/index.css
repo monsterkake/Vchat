@@ -1,6 +1,6 @@
 body
 {
-	background-color: fdff96; 
+	background-color: fff; 
 	background-size: 1920px 1080px;
 	
 }
@@ -11,8 +11,6 @@ body
 	position: absolute;
 	color : black;
 	font-size: 1.5vw;
-	width: 13%;
-    height: 8%;
 }
 
 #chatButton
@@ -30,43 +28,17 @@ body
 #addOptionsButton
 {
 	position: absolute;
-	left: 87%;
-	top: 15%;
+	left: 86%;
+	top: 1%;
 	width: 13%;
     height: 8%;
 }
 
-#developersButton
+#authorisationButton
 {
 	position: absolute;
-	left: 87%;
-	top: 35%;
 	width: 13%;
     height: 8%;
-}
-
-#informationButton
-{
-	position: absolute;
-	left: 87%;
-	top: 55%;
-	width: 13%;
-    height: 8%;
-}
-
-#blitzButton
-{
-	position: absolute;
-	left: 87%;
-	top: 75%;
-	width: 13%;
-    height: 8%;
-}
-
-#questionMark
-{
-	width: 30px;
-    height: 30px;
 }
 
 #resetButton

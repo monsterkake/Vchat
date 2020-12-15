@@ -1,6 +1,6 @@
 body
 {
-	background-color: fdff96; 
+	background-color: fff; 
 	background-size: 1920px 1080px;
 }
 
@@ -9,7 +9,7 @@ body
 	background-color: ffd503; 
 	position: absolute;
 	color : black;
-	font-size: 15px;
+	font-size: 1.5vw;
 	width: 20%;
     height: 8%;
 }
@@ -18,15 +18,15 @@ body
 {
 	padding: 10% 10px;
 	font-size: 2vw;
+	width: 60%;
 }
 #nazadButton
 {
 	position: absolute;
-	left: 0%;
-	top: 0%;
-	font-size: 20px;
-	width: 150px;
-    height: 50px;
+	left: 1%;
+	top: 1%;
+	width: 13%;
+    height: 8%;
 }
 
 #TimLid
@@ -34,7 +34,6 @@ body
 	position: absolute;
 	right: 0%;
 	top: 0%;
-	font-size: 20px;
 }
 
 #Ingeener-modelist
@@ -42,7 +41,6 @@ body
 	position: absolute;
 	right: 0%;
 	top: 15%;
-	font-size: 20px;
 }
 
 #Modeller2
@@ -50,7 +48,6 @@ body
 	position: absolute;
 	right: 0%;
 	top: 25%;
-	font-size: 20px;
 }
 
 #Proggrammer
@@ -58,7 +55,6 @@ body
 	position: absolute;
 	right: 0%;
 	top: 40%;
-	font-size: 20px;
 }
 
 #Proggrammer2
@@ -66,16 +62,11 @@ body
 	position: absolute;
 	right: 0%;
 	top: 50%;
-	font-size: 20px;
 }
 #Kurator
 {
 	position: absolute;
 	right: 0%;
 	top: 80%;
-	font-size: 20px;
 }
-
-
-
 

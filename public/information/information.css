@@ -1,6 +1,6 @@
 body
 {
-	background-color: fdff96; 
+	background-color: fff; 
 	background-size: 1920px 1080px;
 	
 }
@@ -16,13 +16,12 @@ body
 .text-block 
 {
 	padding: 10% 10px;
-	font-size: 30px;
+	font-size: 2.5vw;
 }
 #nazadButton
 {
 	position: absolute;
-	left: 0%;
-	top: 0%;
-	width: 150px;
-    height: 50px;
+	left: 1%;
+	top: 1%;
+	
 }
