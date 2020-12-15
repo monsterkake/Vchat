@@ -105,9 +105,17 @@ console.log('pc', pc);
  //pc.onaddstream = event => {
  //  remoteVideo.srcObject = event.stream;
  //};
+ var video_constraints = {
+  mandatory: {
+    maxHeight: 640,
+    maxWidth: 480 
+  },
+  optional: []
+};
+ 
   navigator.mediaDevices.getUserMedia({
     audio: true,
-    video: true,
+    video: video_constraints,
   }).then(stream => {
     // Display your local video in #localVideo element
     //localVideo.srcObject = stream;
