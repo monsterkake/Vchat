@@ -9,7 +9,9 @@ body{
 }
 
 video{
-    max-width: calc(50% - 100px);
+    /*max-width: calc(50% - 100px);*/
+	height: auto;
+	width: 80%;
     margin: 0 50px;
     box-sizing: border-box;
     border-radius: 2px;
@@ -31,4 +33,19 @@ video{
     bottom: 10px;
     left: 50%;
     font-size: 16px;
+}
+
+.button
+{
+	background-color: #ffd503; 
+	position: absolute;
+	color : black;
+	font-size: 1.5vw;
+}
+
+#backButton
+{
+	position:fixed;
+	left:0px;
+	bottom:10px;
 }

@@ -1,11 +1,11 @@
 let socket = io()
 let userRole = sessionStorage.getItem("userRole")
+const chatButton = document.getElementById("chatButton")
+
 if(sessionStorage.getItem("userRole") != "admin")
 	{
 		sessionStorage.setItem("userRole","basic")
 	}
-
-
 
 console.log(userRole);
 
@@ -14,8 +14,6 @@ createLabel(userRole);
 if(userRole == "admin")
 {
 	createResetButton()
-	
-	
 }
 
 function createLabel(Role)
@@ -39,4 +37,3 @@ function createResetButton()
 	console.log('resetButton')
 })
 }
-

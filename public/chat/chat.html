@@ -8,37 +8,11 @@
 	<link href="chat.css" rel="stylesheet">
 </head>
 <body>
-	<div class="copy">
-		Send your URL to a friend to start a video call
-	</div>
-	<div class="buttons">
+	<video id="remoteVideo" autoplay></video>
+	<div class="button">
 		<button onclick="window.location.href='../index.html'" id = "backButton" class = "button">Назад</button>
 	</div>
-	<video id="localVideo" autoplay muted></video>
-	<video id="remoteVideo" autoplay></video>
-	<div class = "chat">
-		<p>Чат:</p><br>
-		<input type="text" class="form-control" id="inp"><br>
-		<button OnClick="a();">Отправить сообщение</button><br>
-	</div>
 	<script src="script.js"></script>
-  
-	<script>
-		$('.copy').html('Передать этот url другу для создания видео связи '+ (window.location.href));
-	</script>
-	
-	
-	<script>
-		function a()
-		{
-		var input = document.getElementById('inp');
-
-		drone.publish({
-		room: roomName,
-		message: input.value
-		})
-		}
-	</script>
 
 </body>
 </html>
