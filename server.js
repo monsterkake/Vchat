@@ -1,12 +1,20 @@
 const express = require('express')
 const app = express()
-const http = require('http').Server(app)
-const io = require('socket.io')(http)
-const port = process.env.PORT || 3000
+const https = require('https')
+const http = require('http')
+const io = require('socket.io')(https)
+const port = 3000
 const fs = require('fs');
 
 app.use(express.static(__dirname + "/public"))
 let clients = 0
+
+const options = {
+  key: fs.readFileSync('key.pem'),
+  cert: fs.readFileSync('cert.pem')
+};
+
+
 
 io.on('connection', function (socket) {
     socket.on("NewClient", function () {
@@ -42,10 +50,15 @@ function SendAnswer(data) {
     this.broadcast.emit("BackAnswer", data)
 }
 
-http.listen(port, () => console.log(`Active on ${port} port`))
-
 function resetServer()
 {
 	clients = 0
 	console.log("reset")
 }
+
+
+//http.listen(port, () => console.log(`Active on ${port} port`))
+
+http.createServer(app).listen(port , () => console.log(`Active on ${port} port`));
+
+https.createServer(options, app ).listen(8000);

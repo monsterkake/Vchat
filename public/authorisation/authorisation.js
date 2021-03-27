@@ -1,4 +1,4 @@
-let socket = io()
+/*let socket = io()*/
 const authorisationButton = document.querySelector('#authorisationButton')
 const passwordInput = document.querySelector('#passwordInput')
 const OkButton = document.querySelector('#OkButton')
