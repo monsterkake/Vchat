@@ -7,14 +7,8 @@ if (sessionStorage.getItem("userRole") != "admin") {
 
 let userRole = sessionStorage.getItem("userRole")
 
-createLabel("Роль: " + userRole, "label");
-
-if (sessionStorage.getItem("operatorIsGone") == "true") {
-	alert("Оператор отсутствует");
-	sessionStorage.setItem("operatorIsGone", "false");
-}
-
 if (userRole == "admin") {
+	createLabel("Роль: " + userRole, "label");
 	createResetButton()
 }
 
@@ -51,9 +45,19 @@ function createResetButton() {
 	})
 }
 
-//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+if (sessionStorage.getItem("message") > 0) {
+	if(sessionStorage.getItem("message") == 1)
+		alert("Оператор отсутствует");
+	if(sessionStorage.getItem("message") == 2)
+		alert("Чат сейчас занят");
+	if(sessionStorage.getItem("message") == 3)
+		alert("Оператор закончил разговор");
+	sessionStorage.setItem("message", "0");
+}
 
+//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+/*
 // Generate random room name if needed
 if (!location.hash) {
 	//location.hash = Math.floor(Math.random() * 0xFFFFFF).toString(16);
@@ -162,7 +166,7 @@ function startWebRTC(isOfferer) {
 		},
 		optional: []
 	};
-	/*
+	
 	navigator.mediaDevices.getUserMedia({
 		audio: true,
 		video: video_constraints,
@@ -172,7 +176,7 @@ function startWebRTC(isOfferer) {
 		// Add your stream to be sent to the conneting peer
 		stream.getTracks().forEach(track => pc.addTrack(track, stream));
 	  }, onError);
-	*/
+	
 	function onErrorForRTC(error) {
 		room.on('data', (message, client) => {
 			// Message was sent by us
@@ -229,3 +233,4 @@ function localDescCreated(desc) {
 		onError
 	);
 }
+*/

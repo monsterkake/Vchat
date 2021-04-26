@@ -43,6 +43,14 @@ video{
 	font-size: 1.5vw;
 }
 
+#hangUpButton
+{
+	position:fixed;
+	left:50%;
+	bottom:10%;
+	font-size: 40px;
+}
+
 #backButton
 {
 	position:fixed;

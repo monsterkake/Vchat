@@ -8,6 +8,21 @@ const roomHash = location.hash.substring(1);
 
 let userRole = sessionStorage.getItem("userRole");
 
+function createHangUpButton() {
+	let button = document.createElement('button')
+	button.id = "hangUpButton"
+	button.setAttribute('class', "button")
+	button.innerHTML = "✆"
+	document.querySelector('#videoBottom').appendChild(button)
+	button.addEventListener('click', () => {
+		drone.publish({
+			room: roomName,
+			message: "hangUp"
+		})
+		window.location.replace("../index.html");
+	})
+}
+
 // TODO: Replace with your own channel ID
 const drone = new ScaleDrone('i0QUyybS6IyjZK2X');
 // Room name needs to be prefixed with 'observable-'
@@ -51,19 +66,13 @@ drone.on('open', error => {
 	room.on('members', members => {
 		console.log('MEMBERS', members);
 		//---------------------------------
-		if (members.length < 2) {
-			if (userRole != "admin") {
-				//window.location.replace("../index.html");
-				//sessionStorage.setItem("operatorIsGone", "true");
-
-			}
+		if (members.length > 2) {
+			window.location.replace("../index.html");
+			sessionStorage.setItem("message", "2");
 		}
-		drone.publish({
-			room: roomName,
-			message: "chatIsWaiting"
-		})
-
-
+		if (userRole == "admin") {
+			createHangUpButton();
+		}
 		// If we are the second user to connect to the room we will be creating the offer
 		const isOfferer = members.length === 2;
 		startWebRTC(isOfferer);
@@ -85,8 +94,15 @@ function startWebRTC(isOfferer) {
 		console.log('Received message', message);
 		if ((message == "operatorIsGone") && (userRole != "admin")) {
 			window.location.replace("../index.html");
-			sessionStorage.setItem("operatorIsGone", "true");
-
+			sessionStorage.setItem("message", "1");
+		}
+		if ((message == "SDPError")) {
+			sessionStorage.setItem("redirect", "chat");
+			window.location.replace("../redirect/redirect.html");
+		}
+		if ((message == "hangUp")) {
+			sessionStorage.setItem("message", "3");
+			window.location.replace("../redirect/redirect.html");
 		}
 		//$('.textArea').html(message); 
 	});
@@ -192,6 +208,10 @@ function startWebRTC(isOfferer) {
 			*/
 			//sessionStorage.setItem("redirect", "chat");
 			//window.location.replace("../redirect/redirect.html");
+			drone.publish({
+				room: roomName,
+				message: "SDPError"
+			})
 		}
 
 		if (message.sdp) {
@@ -222,10 +242,13 @@ function localDescCreated(desc) {
 const textArea_ = document.getElementById('text_');
 
 window.onbeforeunload = function () {
-	drone.publish({
-		room: roomName,
-		message: "operatorIsGone"
-	})
+	if(userRole == "admin")
+	{
+		drone.publish({
+			room: roomName,
+			message: "operatorIsGone"
+		})
+	}
 };
 
 function sendInput() {
