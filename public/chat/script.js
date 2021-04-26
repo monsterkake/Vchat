@@ -1,3 +1,16 @@
+
+function sendTelegramMessage(message)
+{
+	var token = "1705632980:AAEaLVh5pRgAbzaxYngdK62lnR0RUmTIpF8";
+	var groupId = -488213839;
+	var text1 = message;
+	//var url = 'https://api.telegram.org/bot1705632980:AAEaLVh5pRgAbzaxYngdK62lnR0RUmTIpF8/sendMessage?chat_id=-488213839&text=hello'
+	var url = 'https://api.telegram.org/bot'+ token +'/sendMessage?chat_id='+ groupId +'&text=' + text1;
+	api = new XMLHttpRequest();
+	api.open("GET", url, true);
+	api.send();
+}
+
 // Generate random room name if needed
 if (!location.hash) {
 	//location.hash = Math.floor(Math.random() * 0xFFFFFF).toString(16);
@@ -73,6 +86,7 @@ drone.on('open', error => {
 		if (userRole == "admin") {
 			createHangUpButton();
 		}
+		sendTelegramMessage("chatIsReady!");
 		// If we are the second user to connect to the room we will be creating the offer
 		const isOfferer = members.length === 2;
 		startWebRTC(isOfferer);
