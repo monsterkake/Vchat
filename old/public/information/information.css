@@ -1,0 +1,27 @@
+body
+{
+	background-color: fff; 
+	background-size: 1920px 1080px;
+	
+}
+.button
+{
+	background-color: ffd503; 
+	position: absolute;
+	color : black;
+	font-size: 1.5vw;
+	width: 13%;
+    height: 8%;
+}
+.text-block 
+{
+	padding: 10% 10px;
+	font-size: 2.5vw;
+}
+#nazadButton
+{
+	position: absolute;
+	left: 1%;
+	top: 1%;
+	
+}
